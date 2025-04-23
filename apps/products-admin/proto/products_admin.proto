@@ -1,0 +1,76 @@
+syntax = "proto3";
+
+package products_admin;
+option go_package = "./";
+
+service ProductsAdminService {
+  rpc AddProduct (AddProductRequest) returns (AddProductResponse) {}
+  rpc UpdateProduct (UpdateProductRequest) returns (UpdateProductResponse) {}
+  rpc DeleteProduct (DeleteProductRequest) returns (DeleteProductResponse) {}
+  rpc ApplyDiscount (ApplyDiscountRequest) returns (ApplyDiscountResponse) {}
+  rpc RemoveDiscount (RemoveDiscountRequest) returns (RemoveDiscountResponse) {}
+  rpc AddStock (AddStockRequest) returns (AddStockResponse) {}
+}
+
+message AddProductRequest {
+  string name = 1;
+  string description = 2;
+  string image = 3;
+  float price = 4;
+  float discount = 5;
+  repeated string category = 6;
+}
+
+message AddProductResponse {
+  string product_id = 1;
+  string message = 2;
+}
+
+message UpdateProductRequest {
+  string product_id = 1;
+  string name = 2;
+  string description = 3;
+  string image = 4;
+  float price = 5;
+  float discount = 6;
+  repeated string category = 7;
+}
+
+message UpdateProductResponse {
+  string message = 1;
+}
+
+message DeleteProductRequest {
+  string product_id = 1;
+}
+
+message DeleteProductResponse {
+  string message = 1;
+}
+
+message ApplyDiscountRequest{
+  string product_id = 1;
+  float discount = 2;
+}
+
+message ApplyDiscountResponse {
+  string message = 1;
+}
+
+message RemoveDiscountRequest{
+  string product_id = 1;
+}
+
+message RemoveDiscountResponse {
+  string message = 1;
+}
+
+message AddStockRequest {
+  string product_id = 1;
+  string market_id = 2;
+  int32 stock = 3;
+}
+
+message AddStockResponse {
+  string message = 1;
+}

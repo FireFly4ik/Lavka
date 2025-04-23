@@ -1,0 +1,8 @@
+env: local
+port: 50053
+dataBase:
+  address: localhost
+  user: postgres
+  password: ItStartup
+  dbName: lavka_products
+  port: 5432

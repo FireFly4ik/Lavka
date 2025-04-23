@@ -1,0 +1,13 @@
+env: local
+port: ":8080"
+clients:
+  auth:
+    address: 109.172.114.37
+    port: 50051
+    appSecret: "qwertyuiop"
+  products-customer:
+    address: 109.172.114.37
+    port: 50052
+  products-admin:
+    address: 109.172.114.37
+    port: 50053

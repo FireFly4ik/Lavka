@@ -1,8 +1,16 @@
 package main
 
 import (
+	_ "github.com/FireFly4ik/Lavka-gateway/docs"
+	"github.com/FireFly4ik/Lavka-gateway/internal/config"
+	"github.com/FireFly4ik/Lavka-gateway/internal/handlers/auth"
+	proAdm "github.com/FireFly4ik/Lavka-gateway/internal/handlers/products-admin"
+	proCus "github.com/FireFly4ik/Lavka-gateway/internal/handlers/products-customer"
+	"github.com/FireFly4ik/Lavka-gateway/internal/rpc"
 	"github.com/gin-contrib/cors"
 	"github.com/gin-gonic/gin"
+	"github.com/swaggo/files"
+	"github.com/swaggo/gin-swagger"
 	"os"
 
 	prettyconsole "github.com/thessem/zap-prettyconsole" //logger
@@ -22,7 +30,7 @@ const (
 // @termsOfService http://swagger.io/terms/
 
 // @contact.name API Support
-// @contact.url https://github.com/ultard/fusion
+// @contact.url https://github.com/FireFly4ik/Lavka
 
 // @license.name MIT
 // @license.url https://opensource.org/licenses/MIT

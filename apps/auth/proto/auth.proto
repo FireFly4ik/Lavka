@@ -1,0 +1,100 @@
+syntax = "proto3";
+
+package auth;
+option go_package = "./";
+
+service AuthService {
+  rpc Refresh (RefreshRequest) returns (RefreshResponse) {}
+  rpc Login (LoginRequest) returns (LoginResponse) {}
+  rpc SSOLogin (SSOLoginRequest) returns (LoginResponse) {}
+  rpc Register (RegisterRequest) returns (RegisterResponse) {}
+  rpc Logout (LogoutRequest) returns (LogoutResponse) {}
+  rpc ConfirmEmail (ConfirmEmailRequest) returns (ConfirmEmailResponse) {}
+  rpc ForgotPassword (ForgotPasswordRequest) returns (ForgotPasswordResponse) {}
+  rpc ResetPassword (ResetPasswordRequest) returns (ResetPasswordResponse) {}
+  rpc ClientInfo (ClientInfoRequest) returns (ClientInfoResponse) {}
+}
+
+message RefreshRequest {
+  string token = 1;
+}
+
+message RefreshResponse {
+  string access_token = 1;
+  string refresh_token = 2;
+  string message = 3;
+}
+
+message LoginRequest {
+  string login = 1;
+  string password = 2;
+  string user_agent = 3;
+  string ip_address = 4;
+}
+
+message SSOLoginRequest {
+  string sso_token = 1;
+}
+
+message LoginResponse {
+  string access_token = 1;
+  string refresh_token = 2;
+  string message = 3;
+}
+
+message RegisterRequest {
+  string username = 1;
+  string email = 2;
+  string password = 3;
+  string redirect_url = 4;
+}
+
+message RegisterResponse {
+  string message = 1;
+}
+
+message LogoutRequest {
+  string refresh_token = 1;
+}
+
+message LogoutResponse {
+  string message = 1;
+}
+
+message ConfirmEmailRequest {
+  string verification_token = 1;
+}
+
+message ConfirmEmailResponse {
+  string message = 1;
+}
+
+message ForgotPasswordRequest {
+  string email = 1;
+  string redirect_url = 2;
+}
+
+message ForgotPasswordResponse {
+  string message = 1;
+}
+
+message ResetPasswordRequest {
+  string reset_token = 1;
+  string password = 2;
+}
+
+message ResetPasswordResponse {
+  string message = 1;
+}
+
+message ClientInfoRequest {
+  string token = 1;
+}
+
+message ClientInfoResponse {
+  string email = 1;
+  string username = 2;
+  string phone = 3;
+  string avatar = 4;
+  string message = 5;
+}

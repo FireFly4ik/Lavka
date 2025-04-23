@@ -2,4 +2,7 @@ go 1.23.2
 
 use (
 	./apps/gateway
+	./apps/auth
+    ./apps/products-admin
+    ./apps/products-customer
 )

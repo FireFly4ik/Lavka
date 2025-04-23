@@ -1,0 +1,15 @@
+env: local
+port: 50051
+dataBase:
+  address: localhost
+  user: postgres
+  password: ItStartup
+  dbName: lavka_auth
+  port: 5432
+smtp:
+  smtpHost: smtp.yandex.ru
+  smtpPort: 465
+  smtpUsername: F1reFly4ik
+  smtpPassword: pjpyabmklrwrmoib
+  emailFrom: f1refly4ik@yandex.ru
+jwtSecretKey: qwertyuiop

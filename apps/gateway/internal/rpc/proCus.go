@@ -27,14 +27,14 @@ func NewProCus(addr string) (*ProCusClient, error) {
 	return &ProCusClient{api: proto.NewProductsCustomerServiceClient(cc)}, nil
 }
 
-func (c *ProCusClient) ProductRequest(ctx context.Context, productID string) (string, string, *string, float32, float32, string, string, error) {
+func (c *ProCusClient) ProductRequest(ctx context.Context, productID string) (string, string, *string, float32, float32, []string, string, error) {
 	const op = "proCus.ProductRequest"
 
 	resp, err := c.api.Product(ctx, &proto.ProductRequest{
 		ProductId: productID,
 	})
 	if err != nil {
-		return "", "", nil, 0, 0, "", "", fmt.Errorf("%s: %w", op, err)
+		return "", "", nil, 0, 0, nil, "", fmt.Errorf("%s: %w", op, err)
 	}
 
 	return resp.Name, resp.Description, &resp.Image, resp.Price, resp.Discount, resp.Category, resp.Message, nil

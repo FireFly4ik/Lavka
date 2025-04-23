@@ -30,7 +30,7 @@ message ProductResponse {
   string image = 3;
   float price = 4;
   float discount = 5;
-  string category = 6;
+  repeated string category = 6;
   string message = 7;
 }
 

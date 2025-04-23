@@ -12,13 +12,13 @@ type ProductRequest struct {
 }
 
 type ProductResponse struct {
-	Name        string  `json:"name"`
-	Description string  `json:"description"`
-	Image       *string `json:"image"`
-	Price       float32 `json:"price"`
-	Discount    float32 `json:"discount"`
-	Category    string  `json:"category"`
-	Message     string  `json:"message"`
+	Name        string   `json:"name"`
+	Description string   `json:"description"`
+	Image       *string  `json:"image"`
+	Price       float32  `json:"price"`
+	Discount    float32  `json:"discount"`
+	Category    []string `json:"categories"`
+	Message     string   `json:"message"`
 }
 
 func Product(c *gin.Context) {

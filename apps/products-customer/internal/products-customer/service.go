@@ -35,8 +35,19 @@ func (s *ProductsCustomerServiceServer) Category(ctx context.Context, req *pb.Ca
 func (s *ProductsCustomerServiceServer) Product(ctx context.Context, req *pb.ProductRequest) (*pb.ProductResponse, error) {
 	var product models.Product
 
-	if err := database.DB.Where("product_id = ?", req.ProductId).First(&product).Error; err != nil {
+	if err := database.DB.Where("id = ?", req.ProductId).First(&product).Error; err != nil {
 		return nil, errors.New("invalid id")
+	}
+
+	query := database.DB.Model(&models.Category_product{}).Where("product_id = ?", req.ProductId)
+	if query.Error != nil {
+		return nil, errors.New("problem in category_product")
+	}
+
+	var categories []string
+
+	if err := query.Find(&categories).Error; err != nil {
+		return nil, err
 	}
 
 	var Image_url string
@@ -52,6 +63,7 @@ func (s *ProductsCustomerServiceServer) Product(ctx context.Context, req *pb.Pro
 		Price:       product.Price,
 		Discount:    product.Discount,
 		Image:       Image_url,
+		Category:    categories,
 	}, nil
 }
 
